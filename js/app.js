@@ -1,5 +1,5 @@
 var my_news = [
-/*	{
+	{
 		author: 'Саша Печкин',
 		text: 'В четчерг, четвертого числа...'
 	},
@@ -14,10 +14,16 @@ var my_news = [
 	{
 		author: 'Петров Петя',
 		text: 'Lorem ipsum dolor sit amet, consectetur.'
-	}*/
+	}
 ];
 
 var Article = React.createClass({
+	propTypes: {
+		data: React.PropTypes.shape({
+			author: React.PropTypes.string.isRequired,
+			text: React.PropTypes.string.isRequired
+		})
+	},
 	render: function() {
 		var author = this.props.data.author,
 			text = this.props.data.text;
@@ -32,6 +38,9 @@ var Article = React.createClass({
 });
 
 var News = React.createClass({
+	propTypes: {
+		data: React.PropTypes.array.isRequired
+	},
 	render: function() {
 		var data = this.props.data;
 		var newsTemplate;

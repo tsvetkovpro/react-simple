@@ -60,6 +60,7 @@ var Article = React.createClass({
 	}
 });
 
+
 var News = React.createClass({
 	propTypes: {
 		data: React.PropTypes.array.isRequired
@@ -95,7 +96,11 @@ var News = React.createClass({
 	}
 });
 
+
 var TestInput = React.createClass({
+	componentDidMount: function() { //ставим фокус в input
+		ReactDOM.findDOMNode(this.refs.myTestInput).focus();
+	},
 	onBtnClickHandler: function() {
 		console.log(this.refs);
 		alert(ReactDOM.findDOMNode(this.refs.myTestInput).value);
@@ -115,12 +120,13 @@ var TestInput = React.createClass({
 	}
 });
 
+
 var App = React.createClass({
 	render: function () {
 		return (
 			<div className='app'>
 				<h3>Новости</h3>
-				<TestInput /> {/* добавили вывод компонента */}
+				<TestInput />
 				<News data={my_news}/>
 			</div>
 		);
